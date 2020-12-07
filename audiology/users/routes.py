@@ -92,7 +92,7 @@ def user_playlist(username):
                 songs.songs.remove(song)
                 db.session.commit()
                 flash("Song was successfully removed from your playlist.", "success")
-                return redirect(url_for("users.user_playlist", username=username))
+                return redirect(url_for("main.home", username=username))
     return render_template('user_playlist.html', songs=songs, user=user, length=length)
 
 
@@ -100,7 +100,6 @@ def user_playlist(username):
 @login_required
 def update_playlist():
     add_song = request.args.get("add_song_to_playlist", type=int)
-    page = request.args.get("page", 1, type=int)
 
     user = User.query.filter_by(username=current_user.username).first_or_404()
     playlist = PrivatePlaylist.query.filter_by(username_id=current_user.id).first()

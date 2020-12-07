@@ -1,39 +1,42 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="content-section">
-    <form method="POST" action="" enctype="multipart/form-data">
+<div class="create-style">
+    <form class="create-form editor-style" method="POST" action="" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">{{ legend }}</legend>
-            <div class="form-group">
-                {{ form.song_name.label(class="form-control-label") }}
-                {% if form.song_name.errors %}
-                {{ form.song_name(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.song_name.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
+        <h2 class="create-name editor-name"><p class="editor-name-name create-name-name">Song Details Editor</p></h2>
+        <fieldset class="editor-input-groups">
+            <div class="horizontal-input">
+                <div class=" acc-input little-input first">
+                    {{ form.song_name.label(class="form-control-label") }}
+                    {% if form.song_name.errors %}
+                    {{ form.song_name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.song_name.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.song_name(class="form-control form-control-lg audio-forms audio-forms-create hori-group") }}
+                    {% endif %}
                 </div>
-                {% else %}
-                {{ form.song_name(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.artist.label(class="form-control-label") }}
-                {% if form.artist.errors %}
-                {{ form.artist(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.artist.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
+                <div class=" acc-input little-input">
+                    {{ form.artist.label(class="form-control-label") }}
+                    {% if form.artist.errors %}
+                    {{ form.artist(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.artist.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.artist(class="form-control form-control-lg audio-forms audio-forms-create hori-group") }}
+                    {% endif %}
                 </div>
-                {% else %}
-                {{ form.artist(class="form-control form-control-lg") }}
-                {% endif %}
             </div>
-            <div class="form-group">
-                {{ form.lyrics.label(class="form-control-label") }}
+            
+            <div class="form-group acc-input large-input">
+                {{ form.lyrics.label(class="form-control-label editor-label") }}
                 {% if form.lyrics.errors %}
                 {{ form.lyrics(class="form-control form-control-lg is-invalid") }}
                 <div class="invalid-feedback">
@@ -42,12 +45,13 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.lyrics(class="form-control form-control-lg") }}
+                {{ form.lyrics(class="form-control form-control-lg audio-forms audio-forms-create text-area") }}
                 {% endif %}
             </div>
         </fieldset>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-outline-info") }}
+        <div class="form-group create-label-con">
+            <label for="update-song" class="acc-submit-label create-submit-label">Update</label>
+            {{ form.submit(class="btn btn-outline-info", id="update-song") }}
         </div>
     </form>
 </div>

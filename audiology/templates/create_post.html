@@ -2,13 +2,15 @@
 
 {% block content %}
 
-<div class="content-section">
+<div class="create-style">
 
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form class="create-form create-form-add-song" method="POST" action="" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">{{ legend }}</legend>
-            <div class="form-group">
+        <div class="create-logo-con add-song-head">
+            <h2 class="create-name"><p class="create-name-name">Add a Song</p></h2>
+        </div>
+        <fieldset class="create-input-groups login-input-groups">
+            <div class="form-group acc-input create-spacing">
             
                 {{ form.song_name.label(class="form-control-label") }}
                 {% if form.song_name.errors %}
@@ -19,10 +21,10 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.song_name(class="form-control form-control-lg") }}
+                {{ form.song_name(class="form-control form-control-lg audio-forms audio-forms-create") }}
                 {% endif %}
             </div>
-            <div class="form-group">
+            <div class="form-group acc-input create-spacing">
                 {{ form.year.label(class="form-control-label") }}
                 {% if form.year.errors %}
                 {{ form.year(class="form-control form-control-lg is-invalid") }}
@@ -32,10 +34,10 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.year(class="form-control form-control-lg") }}
+                {{ form.year(class="form-control form-control-lg audio-forms audio-forms-create") }}
                 {% endif %}
             </div>
-            <div class="form-group">
+            <div class="form-group acc-input create-spacing">
                 {{ form.artist.label(class="form-control-label") }}
                 {% if form.artist.errors %}
                 {{ form.artist(class="form-control form-control-lg is-invalid") }}
@@ -45,7 +47,7 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.artist(class="form-control form-control-lg") }}
+                {{ form.artist(class="form-control form-control-lg audio-forms audio-forms-create") }}
                 {% endif %}
             </div>
             <div class="input-group">
@@ -56,9 +58,9 @@
             </div>            
             
         </fieldset>
-
-        <div class="form-group">
-            {{ form.submit(class="btn btn-outline-info") }}
+        <div class="form-group create-label-con login-label">
+            <label for="add-song-button" class="acc-submit-label create-submit-label">Add Song</label>
+            {{ form.submit(class="btn btn-outline-info add-song-but", id="add-song-button") }}
         </div>
     </form>
 </div>

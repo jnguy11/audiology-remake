@@ -1,12 +1,16 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="content-section">
-    <form method="POST" action="">
+<div class="create-style">
+    <form class="create-form" method="POST" action="">
         {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Registration</legend>
-            <div class="form-group">
+        <div class="create-logo-con create">
+            <img src="../static/profile_pics/default.jpg" alt="" class="create-logo">
+            <h2 class="create-name"><p class="create-name-name">Audiology</p></h2>
+            <p class="create-text">Create an account to get started.</p>
+        </div>
+        <fieldset class="create-input-groups">
+            <div class="form-group acc-input create-spacing">
                 {{ form.username.label(class="form-control-label") }}
                 {% if form.username.errors %}
                 {{ form.username(class="form-control form-control-lg is-invalid")}}
@@ -16,10 +20,10 @@
                     {% endfor %}
                 </div> 
                 {% else %}
-                {{ form.username(class="form-control form-control-lg") }}
+                {{ form.username(class="form-control form-control-lg audio-forms audio-forms-create") }}
                 {% endif %}
             </div>
-            <div class="form-group">
+            <div class="form-group acc-input create-spacing">
                 {{ form.email.label(class="form-control-label") }}
                 {% if form.email.errors %}
                 {{ form.email(class="form-control form-control-lg is-invalid")}}
@@ -29,10 +33,10 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.email(class="form-control form-control-lg") }}
+                {{ form.email(class="form-control form-control-lg audio-forms audio-forms-create") }}
                 {% endif %}
             </div>
-            <div class="form-group">
+            <div class="form-group acc-input create-spacing">
                 {{ form.password.label(class="form-control-label") }}
                 {% if form.password.errors %}
                 {{ form.password(class="form-control form-control-lg is-invalid")}}
@@ -42,10 +46,10 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.password(class="form-control form-control-lg") }}
+                {{ form.password(class="form-control form-control-lg audio-forms audio-forms-create") }}
                 {% endif %}
             </div>
-            <div class="form-group">
+            <div class="form-group acc-input create-spacing">
                 {{ form.confirm_password.label(class="form-control-label") }}
                 {% if form.confirm_password.errors %}
                 {{ form.confirm_password(class="form-control form-control-lg is-invalid")}}
@@ -55,18 +59,21 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.confirm_password(class="form-control form-control-lg") }}
+                {{ form.confirm_password(class="form-control form-control-lg audio-forms audio-forms-create") }}
                 {% endif %}
             </div>
         </fieldset>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-outline-info") }}
+        <div class="form-group create-label-con">
+            <label for="create-account" class="acc-submit-label create-submit-label">Create</label>
+            {{ form.submit(class="btn btn-outline-info", id="create-account") }}
+        </div>
+        <div class="redirect-con">
+            <small class="text-muted question">
+                Have an Account?
+            </small>
+            <a class="ml-2 redirect" href="{{ url_for('users.login') }}">Sign In</a>
         </div>
     </form>
 </div>
-<div class="border-top pt-3">
-    <small class="text-muted">
-        Already Have An Account? <a class="ml-2" href="{{ url_for('users.login') }}">Sign In</a>
-    </small>
-</div>
 {% endblock content %}
+
